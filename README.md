@@ -1,1 +1,1 @@
-# devops-netology
+# Это мой репозиторий для курса DevOps Netology

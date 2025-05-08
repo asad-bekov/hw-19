@@ -17,8 +17,62 @@
 
 ### Добавление `.gitignore` и второй коммит
 
+<<<<<<< HEAD
 1. Создан файл `.gitignore`.
 2. Создан каталог `terraform/` и файл `terraform/.gitignore` со следующим содержимым:
+=======
+### 1. Работа с GitLab:
+
+- В `GitLab` был добавлен удалённый репозиторий:
+  ```bash
+  git remote add gitlab git@gitlab.com:asad-bekov/devops-netology.git
+  ```
+
+- Ветка `main` была отправлена в `GitLab`:
+  ```bash
+  git push -u gitlab main
+  ```
+
+- Ветка `fix` была также отправлена в `GitLab`:
+  ```bash
+  git push -u gitlab fix
+  ```
+
+- Теги `v0.0` и `v0.1` были отправлены в `GitLab`:
+  ```bash
+  git push gitlab v0.0
+  git push gitlab v0.1
+  ```
+---
+
+### 2. Работа с Bitbucket:
+
+- В `Bitbucket` был создан проект `devop-net` и добавлен репозиторий `devops-netology`.
+- В `Bitbucket` подключён SSH и настроен `remote`:
+  ```bash
+  git remote add bitbucket git@bitbucket.org:devop-net/devops-netology.git
+  ```
+
+- Ветка `main` была отправлена в `Bitbucket`:
+  ```bash
+  git push -u bitbucket main
+  ```
+
+- Ветка `fix` была также отправлена в `Bitbucket`:
+  ```bash
+  git push -u bitbucket fix
+  ```
+
+- Теги `v0.0` и `v0.1` были отправлены в `Bitbucket`:
+  ```bash
+  git push bitbucket v0.0
+  git push bitbucket v0.1
+  ```
+
+---
+
+### 3. Создание тегов:
+>>>>>>> c8f83b1 (newest README.md)
 
 */.terraform/
 *.tfstate
@@ -46,7 +100,11 @@ terraform.rc
 
 ---
 
+<<<<<<< HEAD
 ### Удаление и перемещение файлов (эксперимент)
+=======
+### 4. Создание новой ветки `fix`:
+>>>>>>> c8f83b1 (newest README.md)
 
 1. Созданы два файла:
    - `will_be_deleted.txt` с содержимым `will_be_deleted`
@@ -59,7 +117,11 @@ terraform.rc
 
 ---
 
+<<<<<<< HEAD
 ### Проверка истории
+=======
+### 5. Ссылки на репозитории:
+>>>>>>> c8f83b1 (newest README.md)
 
 В результате работы в истории коммитов (`git log --oneline`) отображаются следующие ключевые изменения:
 
@@ -71,7 +133,11 @@ terraform.rc
 
 ---
 
+<<<<<<< HEAD
 ### Отправка изменений
+=======
+### 6. Визуализация веток и тегов:
+>>>>>>> c8f83b1 (newest README.md)
 
 Все коммиты успешно отправлены на удалённые репозитории (`GitHub`, `GitLab`, `Bitbucket`) с помощью:
 
@@ -86,5 +152,7 @@ git push bitbucket main
 ---
 
 ### Итог:
-
 Теперь репозиторий содержит ветку `fix` с изменениями в `README.md`, которая была создана на основе коммита `Prepare to delete and move`. Ветки синхронизированы между GitHub, GitLab и Bitbucket, а также созданы и запушены теги `v0.0` и `v0.1`.
+
+### PS
+*Вся работы была выполнена на **IDE VS Code** поэтому пропустил четвертое задание по рабоет с **IDE PyCharm**.* 

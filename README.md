@@ -1,90 +1,168 @@
-# Домашнее задание к занятию «Системы контроля версий»
+# Домашнее задание к занятию «Ветвления в Git»
+*Асадбеков Асадбек*
 
-*Асадбеков Асадбек* 
+### Выполненные этапы:
 
-# Это мой репозиторий для курса DevOps Netology
+### 1. Инициализация репозитория и создание основных файлов
+- Создан каталог `branching` в директории `hw-19`.
+- Внутри `branching` созданы два скрипта:
+  - `merge.sh`
+  - `rebase.sh`
 
-### Инициализация и первый коммит
-
-1. Репозиторий создан на GitHub и инициализирован с `README.md`.
-2. Клонирован с помощью HTTPS.
-3. Выполнена базовая настройка Git (`user.name`, `user.email`).
-4. Файл `README.md` отредактирован — добавлен заголовок.
-5. Выполнены команды `git status`, `git diff`, `git diff --staged` для понимания текущего состояния.
-6. Изменения были добавлены в staged и закоммичены с сообщением `First commit`.
-
----
-
-### Добавление `.gitignore` и второй коммит
-
-1. Создан файл `.gitignore`.
-2. Создан каталог `terraform/` и файл `terraform/.gitignore` со следующим содержимым:
-
-*/.terraform/
-*.tfstate
-.tfstate.
-crash.log
-*.tfvars
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
-.terraformrc
-terraform.rc
-
-
-3. В файл `README.md` добавлено пояснение о файлах, исключаемых из репозитория.
-
-> **Какие файлы будут проигнорированы:**
-> - `.terraform/` каталоги
-> - файлы состояния `*.tfstate`
-> - файлы переменных `*.tfvars`
-> - override-конфигурации и логи
-> - локальные настройки CLI
-
-4. Все изменения закоммичены с сообщением `Added gitignore`.
+### 2. Создание основного коммита
+- Выполнена команда:
+  ```bash
+  git add merge.sh rebase.sh
+  git commit -m "prepare for merge and rebase"
+  ```
+- Коммит отправлен в ветку `main` в удалённые репозитории:
+  ```bash
+  git push origin main
+  git push gitlab main
+  git push bitbucket main
+  ```
 
 ---
 
-### Удаление и перемещение файлов (эксперимент)
+### 3. Работа с веткой `git-merge`
+- Создана ветка `git-merge`:
+  ```bash
+  git checkout -b git-merge
+  ```
 
-1. Созданы два файла:
-   - `will_be_deleted.txt` с содержимым `will_be_deleted`
-   - `will_be_moved.txt` с содержимым `will_be_moved`
-2. Оба файла добавлены в репозиторий и закоммичены с сообщением `Prepare to delete and move`.
-3. Выполнено:
-   - Удаление файла `will_be_deleted.txt` через `git rm`
-   - Переименование `will_be_moved.txt` в `has_been_moved.txt` через `git mv`
-4. Изменения закоммичены с сообщением `Moved and deleted`.
+#### Изменение 1:
+- Внесены изменения в `merge.sh`:
+  ```bash
+  count=1
+  for param in "$@"; do
+      echo "\$@ Parameter #$count = $param"
+      count=$(( $count + 1 ))
+  done
+  ```
+- Коммит выполнен с сообщением:
+  ```bash
+  git commit -m "merge: @ instead *"
+  ```
+
+#### Изменение 2:
+- Внесены изменения в `merge.sh` для использования `shift`:
+  ```bash
+  count=1
+  while [[ -n "$1" ]]; do
+      echo "Parameter #$count = $1"
+      count=$(( $count + 1 ))
+      shift
+  done
+  ```
+- Коммит выполнен с сообщением:
+  ```bash
+  git commit -m "merge: use shift"
+  ```
+- Ветка `git-merge` отправлена в удалённые репозитории:
+  ```bash
+  git push -u origin git-merge
+  git push -u gitlab git-merge
+  git push -u bitbucket git-merge
+  ```
 
 ---
 
-### Проверка истории
+### 4. Изменение `main` для `rebase.sh`
+- Внесены изменения в `rebase.sh` в ветке `main`:
+  ```bash
+  count=1
+  for param in "$@"; do
+      echo "\$@ Parameter #$count = $param"
+      count=$(( $count + 1 ))
+  done
 
-В результате работы в истории коммитов (`git log --oneline`) отображаются следующие ключевые изменения:
-
-- Initial commit (при инициализации репозитория)
-- First commit (редактирование README)
-- Added gitignore (добавление .gitignore файлов)
-- Prepare to delete and move (создание временных файлов)
-- Moved and deleted (удаление и переименование файлов)
-
----
-
-### Отправка изменений
-
-Все коммиты успешно отправлены на удалённые репозитории (`GitHub`, `GitLab`, `Bitbucket`) с помощью:
-
-<<<<<<< HEAD
-```bash
-git push origin main
-git push gitlab main
-git push bitbucket main
-
-- Теги `v0.0` и `v0.1` доступны на всех платформах. В GitHub они видны на странице [Tags](https://github.com/asad-bekov/devops-netology/tags).
+  echo "====="
+  ```
+- Изменения закоммичены и отправлены в `main`.
 
 ---
 
-### Итог:
+### 5. Работа с веткой `git-rebase`
+- Создана ветка `git-rebase` от коммита `prepare for merge and rebase`:
+  ```bash
+  git checkout -b git-rebase <commit-hash>
+  ```
 
-Теперь репозиторий содержит ветку `fix` с изменениями в `README.md`, которая была создана на основе коммита `Prepare to delete and move`. Ветки синхронизированы между GitHub, GitLab и Bitbucket, а также созданы и запушены теги `v0.0` и `v0.1`.
+#### Изменение 1:
+- Внесены изменения в `rebase.sh`:
+  ```bash
+  for param in "$@"; do
+      echo "Parameter: $param"
+  done
+  ```
+- Коммит выполнен:
+  ```bash
+  git commit -m "git-rebase 1"
+  ```
+
+#### Изменение 2:
+- Внесены изменения в `rebase.sh`:
+  ```bash
+  for param in "$@"; do
+      echo "Next parameter: $param"
+  done
+  ```
+- Коммит выполнен:
+  ```bash
+  git commit -m "git-rebase 2"
+  ```
+- Ветка `git-rebase` отправлена:
+  ```bash
+  git push -u origin git-rebase
+  git push -u gitlab git-rebase
+  git push -u bitbucket git-rebase
+  ```
+
+---
+
+### 6. Слияние ветки `git-merge` в `main`
+- Ветку `git-merge` слили в `main`:
+  ```bash
+  git checkout main
+  git merge git-merge
+  git push
+  ```
+
+---
+
+### 7. Rebase ветки `git-rebase`
+- Переключились в `git-rebase` и выполнили `rebase`:
+  ```bash
+  git checkout git-rebase
+  git rebase main
+  ```
+- Возникли конфликты, которые были разрешены и подтверждены:
+  ```bash
+  git add rebase.sh
+  git rebase --continue
+  ```
+- Изменения отправлены с `--force`:
+  ```bash
+  git push -f origin git-rebase
+  git push -f gitlab git-rebase
+  git push -f bitbucket git-rebase
+  ```
+
+---
+
+### 8. Завершение работы
+- Ветка `git-rebase` была успешно слита в `main`.
+- Ветка `git-rebase` была удалена:
+  ```bash
+  git branch -d git-rebase
+  git push origin --delete git-rebase
+  git push gitlab --delete git-rebase
+  git push bitbucket --delete git-rebase
+  ```
+
+Теперь граф имеет линейную структуру с `main` и `git-merge` как отдельной веткой.
+
+### 4. Визуализация веток:
+
+- Визуализация веток доступна на GitHub:  
+  [Network Graph](https://github.com/asad-bekov/hw-19/network)

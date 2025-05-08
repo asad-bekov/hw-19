@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# Домашнее задание к занятию «Системы контроля версий»"
+# Домашнее задание к занятию «Системы контроля версий»
 
 *Асадбеков Асадбек* 
 
@@ -21,10 +20,9 @@
 1. Создан файл `.gitignore`.
 2. Создан каталог `terraform/` и файл `terraform/.gitignore` со следующим содержимым:
 
-```
-**/.terraform/*
+*/.terraform/
 *.tfstate
-*.tfstate.*
+.tfstate.
 crash.log
 *.tfvars
 override.tf
@@ -33,7 +31,7 @@ override.tf.json
 *_override.tf.json
 .terraformrc
 terraform.rc
-```
+
 
 3. В файл `README.md` добавлено пояснение о файлах, исключаемых из репозитория.
 
@@ -75,24 +73,9 @@ terraform.rc
 
 ### Отправка изменений
 
-Все коммиты успешно отправлены на удалённый репозиторий с помощью:
+Все коммиты успешно отправлены на удалённые репозитории (`GitHub`, `GitLab`, `Bitbucket`) с помощью:
+
 ```bash
 git push origin main
-```
-
-Аутентификация выполнена через персональный токен GitHub.
-
----
-### Скриншоты
-
-![alt text](https://github.com/asad-bekov/devops-netology/raw/main/img/1.png)
-
-![alt text](https://github.com/asad-bekov/devops-netology/raw/main/img/2.png)
-
-![alt text](https://github.com/asad-bekov/devops-netology/raw/main/img/3.png)
-
-![alt text](https://github.com/asad-bekov/devops-netology/raw/main/img/4.png)
-
-![alt text](https://github.com/asad-bekov/devops-netology/raw/main/img/5.png)
-
----
+git push gitlab main
+git push bitbucket main

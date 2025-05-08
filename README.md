@@ -75,7 +75,16 @@ terraform.rc
 
 Все коммиты успешно отправлены на удалённые репозитории (`GitHub`, `GitLab`, `Bitbucket`) с помощью:
 
+<<<<<<< HEAD
 ```bash
 git push origin main
 git push gitlab main
 git push bitbucket main
+
+- Теги `v0.0` и `v0.1` доступны на всех платформах. В GitHub они видны на странице [Tags](https://github.com/asad-bekov/devops-netology/tags).
+
+---
+
+### Итог:
+
+Теперь репозиторий содержит ветку `fix` с изменениями в `README.md`, которая была создана на основе коммита `Prepare to delete and move`. Ветки синхронизированы между GitHub, GitLab и Bitbucket, а также созданы и запушены теги `v0.0` и `v0.1`.
